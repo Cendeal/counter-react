@@ -48,7 +48,7 @@ class CounterGroup extends React.Component {
         temp[index] = value
         this.setState({
             components: temp
-        })
+        }, this.calculateSum)
     }
 
     render() {
@@ -56,8 +56,9 @@ class CounterGroup extends React.Component {
             <input value={this.state.total} onChange={this.changeInput}/>
             <button onClick={this.confirmInput}>确定</button>
             <div>
+                <label>求和：</label>
                 <input value={this.state.sum} disabled={true}/>
-                <button onClick={this.calculateSum}>求和</button>
+                {/*<button onClick={this.calculateSum}>求和</button>*/}
             </div>
 
             {this.generateCounter()}
