@@ -1,12 +1,14 @@
 import React from 'react'
 import Counter from '../Counter/index'
+import {connect} from 'react-redux';
+import * as action from '../../action/index'
 
-class Index extends React.Component {
+class CounterGroup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             total: this.props.total,
-            counters: new Array(this.props.total).fill(0),
+            counters: this.props.counters,
             sum: 0
         }
     }
@@ -48,7 +50,6 @@ class Index extends React.Component {
                             }}/>
         })
     }
-
     changeCounterValue = (value, index) => {
         let temp = Array.from(this.state.counters)
         temp[index] = value
@@ -73,4 +74,10 @@ class Index extends React.Component {
     }
 }
 
-export default Index
+const mapStateToProps = state => ({counters: state.counters});
+
+const mapDispatchToProps = dispatch => ({
+    removeCounter: data => dispatch(action.removeCounter(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterGroup)
