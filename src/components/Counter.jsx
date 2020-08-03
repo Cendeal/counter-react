@@ -7,6 +7,7 @@ class Counter extends React.Component {
             number: 0
         }
     }
+
     increase = () => {
         this.setState({
             number: this.state.number + 1
@@ -17,11 +18,12 @@ class Counter extends React.Component {
             number: this.state.number - 1
         })
     }
+
     render() {
         return <div>
-            <button onClick={this.increase}>+</button>
-            <mark>{this.state.number}</mark>
             <button onClick={this.descrease}>-</button>
+            <mark>{this.state.number}</mark>
+            <button onClick={this.increase}>+</button>
         </div>
     }
 }
