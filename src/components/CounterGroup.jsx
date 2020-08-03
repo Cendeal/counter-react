@@ -18,13 +18,14 @@ class CounterGroup extends React.Component {
         }
         this.setState({
             total: value
-        })
+        }, this.confirmInput)
+
 
     }
     confirmInput = () => {
         this.setState({
             components: new Array(this.state.total).fill(0)
-        })
+        }, this.calculateSum)
     }
 
     calculateSum = () => {
@@ -38,10 +39,12 @@ class CounterGroup extends React.Component {
     }
 
     generateCounter = () => {
-        return this.state.components.map((value, index) => <Counter value={this.state.components[index]} key={index}
-                                                                    changed={(value) => {
-                                                                        this.changeCounterValue(value, index)
-                                                                    }}/>)
+        return this.state.components.map((value, index) => {
+            return <Counter value={this.state.components[index]} key={index}
+                            changed={(value) => {
+                                this.changeCounterValue(value, index)
+                            }}/>
+        })
     }
 
     changeCounterValue = (value, index) => {
@@ -54,8 +57,10 @@ class CounterGroup extends React.Component {
 
     render() {
         return <div>
-            <input value={this.state.total} onChange={this.changeInput}/>
-            <button onClick={this.confirmInput}>确定</button>
+            <div>
+                <label>个数：</label>
+                <input value={this.state.total} onChange={this.changeInput}/>
+            </div>
             <div>
                 <label>求和：</label>
                 <input value={this.state.sum} disabled={true}/>
