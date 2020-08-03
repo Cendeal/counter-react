@@ -15,6 +15,7 @@ class Index extends React.Component {
         let value = 0
         if (e.target.value.match(/[0-9]+/g)) {
             value = parseInt(e.target.value)
+            value = value < 0 ? 0 : value
         }
         this.setState({
             total: value
@@ -24,8 +25,9 @@ class Index extends React.Component {
     }
     confirmInput = () => {
         this.setState({
-            components: new Array(this.state.total).fill(0)
-        }, this.calculateSum)
+            components: new Array(this.state.total).fill(0),
+            sum: 0
+        })
     }
 
     calculateSum = () => {
@@ -59,7 +61,7 @@ class Index extends React.Component {
         return <div>
             <div>
                 <label>个数：</label>
-                <input value={this.state.total} onChange={this.changeInput}/>
+                <input type='number' value={this.state.total} onChange={this.changeInput}/>
             </div>
             <div>
                 <label>求和：</label>
