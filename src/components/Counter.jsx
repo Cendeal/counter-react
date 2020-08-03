@@ -4,9 +4,15 @@ class Counter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            number: 0
+            number: props.value
         }
 
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            number: nextProps.value
+        })
     }
 
     increase = () => {

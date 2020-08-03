@@ -38,9 +38,10 @@ class CounterGroup extends React.Component {
     }
 
     generateCounter = () => {
-        return this.state.components.map((value, index) => <Counter key={index} changed={(value) => {
-            this.changeCounterValue(value, index)
-        }}/>)
+        return this.state.components.map((value, index) => <Counter value={this.state.components[index]} key={index}
+                                                                    changed={(value) => {
+                                                                        this.changeCounterValue(value, index)
+                                                                    }}/>)
     }
 
     changeCounterValue = (value, index) => {
@@ -58,7 +59,6 @@ class CounterGroup extends React.Component {
             <div>
                 <label>求和：</label>
                 <input value={this.state.sum} disabled={true}/>
-                {/*<button onClick={this.calculateSum}>求和</button>*/}
             </div>
 
             {this.generateCounter()}
