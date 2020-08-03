@@ -6,7 +6,7 @@ class Index extends React.Component {
         super(props);
         this.state = {
             total: this.props.total,
-            components: new Array(this.props.total).fill(0),
+            counters: new Array(this.props.total).fill(0),
             sum: 0
         }
     }
@@ -25,13 +25,13 @@ class Index extends React.Component {
     }
     confirmInput = () => {
         this.setState({
-            components: new Array(this.state.total).fill(0),
+            counters: new Array(this.state.total).fill(0),
             sum: 0
         })
     }
 
     calculateSum = () => {
-        let sum = this.state.components.reduce((result, item) => {
+        let sum = this.state.counters.reduce((result, item) => {
             return result += item
         }, 0)
         this.setState({
@@ -41,8 +41,8 @@ class Index extends React.Component {
     }
 
     generateCounter = () => {
-        return this.state.components.map((value, index) => {
-            return <Counter value={this.state.components[index]} key={index}
+        return this.state.counters.map((value, index) => {
+            return <Counter value={this.state.counters[index]} key={index}
                             changed={(value) => {
                                 this.changeCounterValue(value, index)
                             }}/>
@@ -50,10 +50,10 @@ class Index extends React.Component {
     }
 
     changeCounterValue = (value, index) => {
-        let temp = Array.from(this.state.components)
+        let temp = Array.from(this.state.counters)
         temp[index] = value
         this.setState({
-            components: temp
+            counters: temp
         }, this.calculateSum)
     }
 

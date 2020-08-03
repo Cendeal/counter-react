@@ -6,16 +6,15 @@ class Index extends React.Component {
         this.state = {
             number: props.value
         }
-        console.log("test")
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.state.number !== prevProps.value) {
-            this.setState({
-                number: prevProps.value
-            })
+    static getDerivedStateFromProps(props, state) {
+        if (state.number !== props.value) {
+            return {
+                number: props.value
+            }
         }
-
+        return null;
     }
 
     increase = () => {
