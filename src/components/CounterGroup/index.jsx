@@ -1,7 +1,7 @@
 import React from 'react'
-import Counter from './Counter'
+import Counter from '../Counter/index'
 
-class CounterGroup extends React.Component {
+class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,4 +71,4 @@ class CounterGroup extends React.Component {
     }
 }
 
-export default CounterGroup
+export default Index
