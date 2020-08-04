@@ -34,16 +34,15 @@ class CounterGroup extends React.Component {
     }
 
     render() {
-        return <div>
-            <div>
+        return <div className={'counter-group'}>
+            <div className={'item'}>
                 <label>个数：</label>
                 <input type='number' value={this.props.counters.length} onChange={this.changeInput}/>
             </div>
-            <div>
+            <div className={'item'}>
                 <label>求和：</label>
                 <input value={this.props.sum} disabled={true}/>
             </div>
-
             {this.generateCounter()}
         </div>
     }
