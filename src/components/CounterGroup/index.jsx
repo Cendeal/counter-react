@@ -19,15 +19,6 @@ class CounterGroup extends React.Component {
         this.props.resetCounters()
     }
 
-
-    generateCounter = () => {
-        return this.props.counters.map((value, index) => {
-            return <Counter value={value} key={index}
-                            changed={(value) => {
-                                this.changeCounterValue(value, index)
-                            }}/>
-        })
-    }
     changeCounterValue = (value, index) => {
         this.props.changeCounterValue({value, id: index})
         this.props.calculateSum()
@@ -43,7 +34,12 @@ class CounterGroup extends React.Component {
                 <label>求和：</label>
                 <input value={this.props.sum} disabled={true}/>
             </div>
-            {this.generateCounter()}
+            {this.props.counters.map((value, index) => {
+                return <Counter value={value} key={index}
+                                changed={(value) => {
+                                    this.changeCounterValue(value, index)
+                                }}/>
+            })}
         </div>
     }
 }
