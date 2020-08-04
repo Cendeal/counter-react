@@ -16,26 +16,32 @@ class Counter extends React.Component {
     }
 
     increase = () => {
-        let current = this.state.number + 1
+        let current = this.state.value + 1
         this.setState({
             value: current
         })
-        this.props.increase ? this.props.increase(current) : ''
+        if (this.props.increase) {
+            this.props.increase(current)
+        }
         this.changeCounter(current)
 
     }
 
     decrease = () => {
-        let current = this.state.number - 1
+        let current = this.state.value - 1
         this.setState({
             value: current
         })
-        this.props.decrease ? this.props.decrease(current) : ''
+        if (this.props.decrease) {
+            this.props.decrease(current)
+        }
         this.changeCounter(current)
     }
 
     changeCounter(val) {
-        this.props.changed ? this.props.changed(val) : ''
+        if (this.props.changed) {
+            this.props.changed(val)
+        }
     }
 
     render() {
