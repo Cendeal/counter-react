@@ -9,7 +9,7 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 .counter {
@@ -18,4 +18,15 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.counter button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-weight: bold;
+}
+
+.counter-group .item {
+  margin: 0.5rem;
 }
