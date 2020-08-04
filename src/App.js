@@ -1,6 +1,6 @@
 import logo from './images/logo.svg';
 import './css/App.css';
-import CounterGroup from './components/CounterGroup/index';
+import CounterGroupContainer from './container/CounterGroupContainer/index';
 import React from "react";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <CounterGroup/>
+                <CounterGroupContainer/>
             </header>
         </div>
   );

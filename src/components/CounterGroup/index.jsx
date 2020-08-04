@@ -1,7 +1,5 @@
 import React from 'react'
 import Counter from '../Counter/index'
-import {connect} from 'react-redux';
-import * as action from '../../action/index'
 
 class CounterGroup extends React.Component {
     constructor(props) {
@@ -44,16 +42,4 @@ class CounterGroup extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({...state.counterGroup});
-
-const mapDispatchToProps = dispatch => ({
-    removeCounter: () => dispatch(action.removeCounter()),
-    addCounter: () => dispatch(action.addCounter()),
-    changeCounterValue: data => dispatch(action.changeCounterValue(data)),
-    calculateSum: () => dispatch(action.calculateSum()),
-    changeTotalCounter: data => dispatch(action.changeTotalCounter(data)),
-    resetCounters: data => dispatch(action.resetCounters(data))
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CounterGroup)
+export default CounterGroup
