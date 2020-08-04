@@ -1,49 +1,56 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-class Index extends React.Component {
+class Counter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            number: props.value
+            value: props.value
         }
     }
 
-    static getDerivedStateFromProps(props, state) {
-        if (state.number !== props.value) {
-            return {
-                number: props.value
-            }
-        }
-        return null;
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            value: nextProps.value
+        })
     }
 
     increase = () => {
         let current = this.state.number + 1
         this.setState({
-            number: current
+            value: current
         })
+        this.props.increase ? this.props.increase(current) : ''
         this.changeCounter(current)
 
     }
+
     decrease = () => {
         let current = this.state.number - 1
         this.setState({
-            number: current
+            value: current
         })
+        this.props.decrease ? this.props.decrease(current) : ''
         this.changeCounter(current)
     }
 
     changeCounter(val) {
-        this.props.changed(val)
+        this.props.changed ? this.props.changed(val) : ''
     }
 
     render() {
         return <div className="counter">
             <button onClick={this.decrease}>-</button>
-            <span>{this.state.number}</span>
+            <span>{this.state.value}</span>
             <button onClick={this.increase}>+</button>
         </div>
     }
 }
 
-export default Index
+Counter.propTypes = {
+    value: PropTypes.number.isRequired,
+    changed: PropTypes.func,
+    increase: PropTypes.func,
+    decrease: PropTypes.func
+}
+export default Counter
