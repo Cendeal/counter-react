@@ -13,5 +13,4 @@ const mapDispatchToProps = dispatch => ({
     resetCounters: data => dispatch(action.resetCounters(data))
 
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(CounterGroup)

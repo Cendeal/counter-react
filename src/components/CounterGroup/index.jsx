@@ -3,7 +3,7 @@ import Counter from '../Counter/index'
 
 class CounterGroup extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     changeInput = (e) => {
